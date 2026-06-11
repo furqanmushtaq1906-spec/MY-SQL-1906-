@@ -1,6 +1,6 @@
 
 
---SQL(structured query language):is a standard language used to store,retrieve,mamage and manipulate data in relational database.
+--SQL(structured query language):is a standard language used to store,retrieve,manage and manipulate data in relational database.
 --DATABASE:is an organised collection of related data that is stored electronically and can be easily accessed,managed and updated.
 --four basic operations performed on data in a database--
 --1-CREATE
@@ -14,6 +14,21 @@
 --2DATA DEFINITION LANGUAGE(DDL)--
 --3TRANSACTION CONTROL LANGUAGE(TCL)--
 
+/* data definition language(DDL):- DDL is use to define the structure
+DDL commands as follows:-
+CREATE :- CREATE A TABLE
+ALTER :- MAKE CHANGE IN EXISTING TABLE OR WE CAN SAY IT MODIFY THE TABLE
+TRUNCATE :- IT DELETES INTERNAL CONTENT OF TABLE 
+DROP:- DROP MEANS WHEN WE WANT TO DELETE WHOLE TABLE WITH DATA AND ITS CONTENT
+
+
+/*DATA MANUPLATION LANGUAGE(DML):- DML DEALS WITH EXISTING TABLE OR WE CAN SAY EXISTING INSTANCE
+DML commands
+1 . SELECT   IT RETRIVES DATA FROM DATABASE.
+2 . INSERT   adding data in particular table. 
+3 . UPDATE   it updates existing data that are presented in table.
+4 . DELETE   it deletes a particular value inside a table.
+*/
 
 --DATA type tell which type a data a particular holds--
 
@@ -24,7 +39,8 @@
 --ENUM holds gender values('male','female','other')
 --DATE holds data values eg date_of_birth
 
-create table employee(
+create table employee
+(
 id int,
 name varchar(50)
 );
@@ -32,7 +48,7 @@ name varchar(50)
 alter table employee
 add department varchar(30)
 
-alter table employee
+alter table employee  
 add salary int
 
 
@@ -40,35 +56,24 @@ insert into employee(id,name,department,salary) values(100,'aslam','IT',20000)
 insert into employee(id,name,department,salary) values(101,'maaya','IT',20000)
 insert into employee(id,name,department,salary) values(103,'rahul','DATA ANALYST',20000)
 insert into employee(id,name,department,salary) values(104,'tilak verma','DATA ANALYST',20000)
+--clause in sql means to filter data ,order data etc it uses some keywords that are as follows
+-- from
+--where 
+--order by
+--having
 
---here we update
-update employee set name='sahil' where id = 103
-update employee set department='DATA ANALYST' where id=100
-update employee set department='DATA ANALYST' where id=101
-
---here we delete a particular value
-delete from employee where id=104
-
-select * from employee
+update employee
+set name='sahil'
+where id = 103
+update employee
+set department='DATA ANALYST' 
+where id=100
+update employee
+set department='DATA ANALYST'
+where id=101
 
 truncate table employee
 
-create database mydb1
-
-use mydb1
-drop database db2 -- it shows error
-drop database if exists db2 -- handle error gracefully
-
-
-/* data definition language(DDL):- DDL is use to define the structure
-DDL commands as follows:-
-CREATE :- CREATE A TABLE
-ALTER :- MAKE CHANGE IN EXISTING TABLE OR WE CAN SAY IT MODIFY THE TABLE
-TRUNCATE :- IT DELETES INTERNAL CONTENT OF TABLE 
-DROP:- DROP MEANS WHEN WE WANT TO DELETE WHOLE TABLE WITH DATA AND ITS CONTENT
-*/
-
---here we create our table
 create table students
 (
 roll_no int,
@@ -86,15 +91,6 @@ add class varchar(30)
 
 
 
-/*DATA MANUPLATION LANGUAGE(DML):- DML DEALS WITH EXISTING TABLE OR WE CAN SAY EXISTING INSTANCE
-DML commands
-1 . SELECT   IT RETRIVES DATA FROM DATABASE AND WE CALL IT READ
-2 . INSERT   adding data in particular table 
-3 . UPDATE   it updates existibg data that are presented in table
-4 . DELETE   it deletes a particular value inside a table
-*/
-
-
 --here we insert data into table--
 
 insert into students(roll_no,name,section,class) values(1,'sahil','A','12th')
@@ -104,28 +100,19 @@ insert into students(roll_no,name,section,class) values(4,'adnan','A','12th')
 insert into students(roll_no,name,section,class) values(5,'aquib','A','12th')
 
 --here we updare and delete in data
-delete from students where roll_no=4
-update students set name='wasiq' where roll_no=5
+delete from students
+where roll_no=4
+update students
+set name='wasiq' 
+where roll_no=5
 
 
 select * from students
 
 
---clause in sql means to filter data ,order data etc it uses some keywords that are as follows
--- from
---where 
---order by
---having
 
-use mysm
-use mydb1
+drop database employee if exists;
 
-drop database if exists mysm;
-
-
-use mydb1
-
-drop table employee
 
 
 /*
@@ -139,44 +126,64 @@ constraints are rule that are applied to table
 */
 
 
-create table employee
+create table adnan
 (
-empid int primary key,
+id int primary key,
 name varchar(30) not null,
 address varchar(40) default 'srinagar',
 salary int
 )
 
-insert into employee(empid,name,salary) values(100,'sahil',20000)
-insert into employee(empid,name,address,salary) values(101,'adil','pulwama',30000)
-insert into employee(empid,name,salary) values(103,'furkan',40000)
+insert into adnan(id,name,salary) values(100,'sahil',20000)
+insert into adnan(id,name,address,salary) values(101,'adil','pulwama',30000)
+insert into adnan(id,name,salary) values(103,'furkan',40000)
 
-update employee
-set empid=102
-where empid=103
+update adnan
+set id=102
+where id=103
 
-select * from employee
+select * from adnan
+
 
 
 
 --filter--
-select * from employee
+select * from adnan
 where salary=40000
 
-select * from employee
+select * from adnan
 where address='srinagar'
 
-select * from employee
+select * from adnan
 where salary > 20000
 
-select * from employee
+select * from adnan
 where salary < 30000
 
 
 --aggregate functions--are SQL functions that perform a calculation on multiple rows of data and return a single summarized value
 
-select max(salary) as maximum from employee
-select min(salary) as minimum from employee
-select sum(salary) as total_salary from employee
-select AVG(salary) as total_avg from employee
-select count(*) from employee
+select max(salary) as maximum from adnan
+select min(salary) as minimum from adnan
+select sum(salary) as total_salary from adnan
+select AVG(salary) as total_avg from adnan
+select count(*) from adnan
+
+
+select top 2 * from adnan
+
+select top 1 * from adnan
+order by salary desc
+
+select * from adnan
+where name='furkan' and salary=40000
+
+
+select * from adnan 
+order by name desc
+select * from adnan
+where name like '%n'
+
+select * from adnan
+where name like 'f%'
+
