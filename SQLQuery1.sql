@@ -21,9 +21,8 @@
 --varchar holds textual value
 -- int holds numerical value
 -- boolean holds true/false
-
-
-drop table employee
+--ENUM holds gender values('male','female','other')
+--DATE holds data values eg date_of_birth
 
 create table employee(
 id int,
@@ -174,7 +173,7 @@ select * from employee
 where salary < 30000
 
 
---aggregate functions--
+--aggregate functions--are SQL functions that perform a calculation on multiple rows of data and return a single summarized value
 
 select max(salary) as maximum from employee
 select min(salary) as minimum from employee
