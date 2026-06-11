@@ -1,12 +1,18 @@
-single line comment
---SQL DAY 1
 
---multi line comment
-/*
-*/
---DATA MANUPLATION LANGUAGE(DML)--
---DATA DEFINITION LANGUAGE(DDL)--
---TRANSACTION CONTROL LANGUAGE(TCL)--
+
+--SQL(structured query language):is a standard language used to store,retrieve,mamage and manipulate data in relational database.
+--DATABASE:is an organised collection of related data that is stored electronically and can be easily accessed,managed and updated.
+--four basic operations performed on data in a database--
+--1-CREATE
+--2-READ
+--3-UPDATE
+--4-DELETE
+
+--categories  of SQL commonds
+
+--1DATA MANUPLATION LANGUAGE(DML)--
+--2DATA DEFINITION LANGUAGE(DDL)--
+--3TRANSACTION CONTROL LANGUAGE(TCL)--
 
 
 --DATA type tell which type a data a particular holds--
